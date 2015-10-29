@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+	 <script src="//code.jquery.com/jquery.min.js"></script>
+	  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+	  <meta charset="utf-8">
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+	  <link rel="stylesheet" href="app.css">
+	  <script src="app.js"></script>
+	  <title>IoT</title>
+	</head>
+<body ng-controller="AppController as app">
+
+	
+	  <div class="container"><h1>{{app.name}}</h1>
+		
+
+
+		<!-- <canvas id="mycanvas" width="256" height="256">
+		<script>
+
+			$(document).ready(function(){
+				var ctx = $("#mycanvas").get(0).getContext("2d");
+				//pie chart data
+				//sum of values = 360
+
+				var data = [
+					{
+						value: 270,
+						color: "cornflowerblue",
+						highlight: "lightskyblue",
+						label: "Corn Flower Blue"
+					},
+					{
+						value: 50,
+						color: "lightgreen",
+						highlight: "yellowgreen",
+						label: "Lightgreen"
+					},
+					{
+						value: 40,
+						color: "orange",
+						highlight: "darkorange",
+						label: "Orange"
+					}
+				];
+				//draw
+				var piechart = new Chart(ctx).Pie(data);
+			});
+		</script>
+		</div> -->
+
+
+		<div class="col-sm-4">
+				<form ng-submit="app.submit(input)">
+				  <div class="form-group">
+				    <label>IoT ID</label>
+				    <input type="text" ng-model="input.name" class="form-control" placeholder="IoT ID">
+				  </div>
+				  <div class="form-group">
+				    <label >Temperature</label>
+				    <input type="text" ng-model="input.ip_addr" class="form-control" placeholder="Temperature">
+				  </div>
+				  <div class="form-group">
+				    <label >Relative Humidity</label>
+				    <input type="text" ng-model="input.port" class="form-control" placeholder="Relative Humidity">
+				  </div>
+				  <button type="submit" class="glyphicon glyphicon-plus">Add</button>
+
+				  <div class="col-sm-8" ng-repeat="data = app.d">
+				  		{{data.id}}
+				  </div>
+				  
+		</form>
+
+
+
+
+
+</body>
+</html>
