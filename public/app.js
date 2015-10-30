@@ -2,18 +2,26 @@ angular.module('app', [])
   .controller('AppController', function ($http) {
     var app = this
     app.name = 'IoT'
-    var data = null;
+    var data = null
+    getIot()
 
-    
+
+
+    app.report = function(){
+
+      window.location="report.html"
+
+    }
 
      app.submit = function(input){
-       saveIot(input)
+        saveIot(input)
     		console.log(input)
     	}
-          getIot = function(){
+
+         function getIot(){
          $http.get('/api/iot'). success(function(response) {
             app.d = response
-            console.log();
+           
            //    data =[
            //    {
            //      value: app.d[0].temperature,
@@ -46,19 +54,24 @@ angular.module('app', [])
           error(function(data, status, headers, config) {
             // log error
             console.log('error')
-          })
+          });
+
         }
 
-          function saveIot (input) {
-             $http.post('/api/iot', data)
-            .then(function success (response) {
-              console.log(response)
-              getIot()
-              alert('Success')
-            }, function error (response) {
-              alert(response.data.message)
-          })
-    }
+        function saveIot(data) {
+        $http.post('/api/iot', data)
+          .then(function success (response) {
+            console.log(response)
+            getIot()
+            alert('Success')
+          }, function error (response) {
+            alert(response.data.message)
+        })
+      }
+
+
+
+
 
 
 

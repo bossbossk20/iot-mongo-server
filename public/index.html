@@ -19,28 +19,36 @@
 	  <div class="container"><h1>{{app.name}}</h1>
 		
 
-<!-- 
-		 <canvas id="mycanvas" width="256" height="256">  -->
-		</div>
+
+		 <!-- <canvas id="mycanvas" width="256" height="256"> 
+		</div> -->
 		
 
 		
 	
 		<div class="col-sm-4">
 				<form ng-submit="app.submit(input)">
+					<div class="form-group">
+					    <label >Timestamp</label>
+					    <input type="text" ng-model="input.timestamp" class="form-control" placeholder="Timestamp">
+					  </div>
 				  <div class="form-group">
 				    <label>IoT ID</label>
-				    <input type="text" ng-model="input.name" class="form-control" placeholder="IoT ID">
+				    <input type="text" ng-model="input.iot_id" class="form-control" placeholder="IoT ID">
 				  </div>
 				  <div class="form-group">
 				    <label >Temperature</label>
-				    <input type="text" ng-model="input.ip_addr" class="form-control" placeholder="Temperature">
+				    <input type="text" ng-model="input.temperature" class="form-control" placeholder="Temperature">
 				  </div>
 				  <div class="form-group">
 				    <label >Relative Humidity</label>
-				    <input type="text" ng-model="input.port" class="form-control" placeholder="Relative Humidity">
+				    <input type="text" ng-model="input.relative_humidity" class="form-control" placeholder="Relative Humidity">
+
 				  </div>
+				  <button type="submit" class="btn btn-default">Add</button>
 		</form>
+		<br>
+		<button type="submit" class="btn btn-default" ng-click="app.report()">View Report</button>
 		</div>
 
 			

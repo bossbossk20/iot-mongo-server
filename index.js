@@ -35,7 +35,7 @@ app.post('/',function(req,res){
     })
 })
 
-app.post('/models/api',function(req,res){
+app.post('/api/iot',function(req,res){
     var obj = new Model(req.body)
     obj.save(function (err, obj) {
       if (err) {
@@ -46,8 +46,8 @@ app.post('/models/api',function(req,res){
     })
 })
 
-// var iot = require('./models/iot/iot.route.js')
-// app.use('/api/iot', iot)
+ var login = require('./models/login/login.route.js')
+ app.use('/api/login', login)
 
 	app.get('/' , function(req,res){
 		res.send("hello")
