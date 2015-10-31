@@ -2,3 +2,15 @@
 label{
 	float: left;
 }
+
+.he{
+
+	font-size: 38px;
+
+}
+
+.log{
+	float: right;
+	padding-top: 10px;
+	padding-bottom: 15px;
+}

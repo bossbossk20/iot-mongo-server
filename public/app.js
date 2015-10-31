@@ -3,8 +3,67 @@ angular.module('app', [])
     var app = this
     app.name = 'IoT'
     var data = null
-    getIot()
+    var username = null
+    var password = null
+    app.u = []
+    app.session = false
+    app.num = 10
+  
 
+
+    getIot()
+    app.hide = false
+
+    app.toLog =  function(){
+        window.location='login.html'
+    }
+
+
+    app.login = function(input){
+          if((input.username=='admin')&&(input.password=='admin')){
+
+                app.session = true
+
+                window.location='report.html'
+
+
+
+          }
+          
+          
+
+        
+        
+
+         
+           
+          
+
+
+
+    }
+     $http.get('/api/login'). success(function(response) {
+            app.user = response
+            
+            console.log(response)
+               
+            })
+
+
+    app.register = function(data){
+
+       $http.post('/api/login', data)
+          .then(function success (response) {
+            console.log(response)
+            
+            alert('Success')
+          }, function error (response) {
+            alert(response.data.message)
+        })
+
+
+
+    }
 
 
     app.report = function(){

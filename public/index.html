@@ -15,8 +15,8 @@
 	</head>
 <body ng-controller="AppController as app">
 
-	
-	  <div class="container"><h1>{{app.name}}</h1>
+	<br>
+	  <div class="container">
 		
 
 
@@ -24,7 +24,17 @@
 		</div> -->
 		
 
-		
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand he" href="index.html">
+		        {{app.name}}
+		      </a>
+		    </div>
+		    <button class="log btn btn-default " ng-click="app.toLog()">login</button>
+
+		  </div>
+		</nav>
 	
 		<div class="col-sm-4">
 				<form ng-submit="app.submit(input)">
