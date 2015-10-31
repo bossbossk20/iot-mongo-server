@@ -6,27 +6,54 @@ angular.module('app', [])
     var username = null
     var password = null
     app.u = []
-    app.session = false
-    app.num = 10
-  
+     var session 
+    
+    
 
 
     getIot()
-    app.hide = false
+    app.hide = false 
+
+
+    app.delete = function(id){
+        console.log(id);
+        $http.delete('/api/iot/'+id)
+          .success(function(data) {
+            getIot()
+            
+          })
+          .error(function(data) {
+            console.log('Error: ' + data)
+          })
+    }
+
+
+
+    app.checkLogin = function(){  // 
+          console.log(app.session);
+        if(app.session==1){
+          window.location='report.html'
+        }else{
+
+          //window.location = 'report.html'
+        }
+    }
 
     app.toLog =  function(){
         window.location='login.html'
     }
+    
 
 
     app.login = function(input){
           if((input.username=='admin')&&(input.password=='admin')){
 
-                app.session = true
+               app.session = 1
 
+                
+
+                console.log(app.session);
                 window.location='report.html'
-
-
 
           }
           
@@ -74,8 +101,8 @@ angular.module('app', [])
 
      app.submit = function(input){
         saveIot(input)
-    		console.log(input)
-    	}
+        console.log(input)
+      }
 
          function getIot(){
          $http.get('/api/iot'). success(function(response) {

@@ -1,7 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
-var Model = require('./models/iot/iot.schema.js')
+var iot = require('./models/iot/iot.schema.js')
 
 mongoose.connect('mongodb://localhost:27017/iot')
 var app = express()
@@ -12,20 +12,19 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 
-
-app.get('/api/iot',function(req,res){
-    Model.find({}).exec(function (err, results) {
+app.get('/api/iot', function (req, res, next) {
+    iot.find({}).exec(function (err, results) {
       if (err) {
         res.status(500).send(err)
       } else {
         res.send(results)
       }
     })
-});
+  })
 
 
 app.post('/',function(req,res){
-    var obj = new Model(req.body)
+    var obj = new iot(req.body)
     obj.save(function (err, obj) {
       if (err) {
         res.status(500).send(err)
@@ -35,16 +34,36 @@ app.post('/',function(req,res){
     })
 })
 
-app.post('/api/iot',function(req,res){
-    var obj = new Model(req.body)
-    obj.save(function (err, obj) {
-      if (err) {
-        res.status(500).send(err)
-      } else {
-        res.send(obj)
-      }
+
+  app.post('/api/iot',function(req,res){
+      var obj = new iot(req.body)
+      obj.save(function (err, obj) {
+        if (err) {
+          res.status(500).send(err)
+        } else {
+          res.send(obj)
+        }
+      })
+  })
+
+  app.delete('/api/iot/:id', function (req, res){
+      return iot.findById(req.params.id, function (err, iot) {
+        return iot.remove(function (err) {
+          if (!err) {
+            console.log("removed")
+            return res.send('')
+          } else {
+            console.log(err)
+          }
+        })
+      })
     })
-})
+
+  
+
+
+
+
 
  var login = require('./models/login/login.route.js')
  app.use('/api/login', login)
@@ -53,6 +72,7 @@ app.post('/api/iot',function(req,res){
 		res.send("hello")
 	})
 	
+ 
 	
 	
 app.listen(3000)

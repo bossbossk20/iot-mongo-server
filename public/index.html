@@ -65,20 +65,22 @@
 			<table>
 				<thead>
 			      <tr>
-			        <th class="col-sm-2">No.</th>
-			        <th class="col-sm-2">IoT ID</th>
+			        <th class="col-sm-1">No.</th>
+			        <th class="col-sm-1">IoT ID</th>
 			        <th class="col-sm-2">Temperature</th>
 			        <th class="col-sm-2">Relative Humidity</th>
-			        
+			         <th class="col-sm-2">Delete</th>
+
 			      </tr>
 			    </thead>
 			    <tbody>
 			    	<tr ng-repeat="data in app.d">
-			    		<td class="col-sm-2">{{$index}}</td>
-				  		<td class="col-sm-2">{{data.iot_id}}</td>
+			    		<td class="col-sm-1">{{$index}}</td>
+				  		<td class="col-sm-1">{{data.iot_id}}</td>
 				  		<td class="col-sm-2">{{data.temperature}}</td>
 				  		
 				  		<td class="col-sm-2">{{data.relative_humidity}}</td>
+				  		<td class="col-sm-1"><button class="btn btn-danger glyphicon glyphicon-trash " ng-click="app.delete(data._id)"></button></td>	
 				  	</tr>
 			    </tbody>
 			  </table>

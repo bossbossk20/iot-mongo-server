@@ -14,7 +14,28 @@
 	<meta charset="UTF-8">
 	<title>Report</title>
 </head>
-<body ng-controller="AppController as app">
-	{{app.name}}
+<body ng-controller="AppController as app" >
+
+		<div class="container" ng-init="app.checkLogin()">
+		<br>
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <a class="navbar-brand he" href="index.html">
+			        {{app.name}}
+			      </a>
+			    </div>
+			    <button class="log btn btn-default " ng-click="app.toLog()">login</button>
+				
+			  </div>
+			</nav>
+		
+			<h1>
+				Report
+			</h1>
+		</div>
+		<script>
+
+		</script>
 </body>
 </html>
