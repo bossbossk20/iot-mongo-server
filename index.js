@@ -59,6 +59,17 @@ app.post('/',function(req,res){
       })
     })
 
+  app.post('/koy',function(req,res){
+      console.log(req.body.search);
+      iot.find({temperature:req.body.search}).exec(function (err, results) {
+      if (err) {
+        res.status(500).send(err)
+      } else {
+        res.send(results)
+      }
+    })
+      
+  })
   
 
 
