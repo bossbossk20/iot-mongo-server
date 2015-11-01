@@ -6,7 +6,7 @@ angular.module('app', [])
     var username = null
     var password = null
     app.u = []
-     var session 
+      
     
     
 
@@ -14,12 +14,17 @@ angular.module('app', [])
     getIot()
     app.hide = false 
 
+    app.graph = function(){
+            
+      console.log("graph working")
+    }
+
 
     app.delete = function(id){
         console.log(id);
         $http.delete('/api/iot/'+id)
           .success(function(data) {
-            getIot()
+            window.location='index.html'
             
           })
           .error(function(data) {
@@ -30,7 +35,7 @@ angular.module('app', [])
 
 
     app.checkLogin = function(){  // 
-          console.log(app.session);
+          //console.log(app.session);
         if(app.session==1){
           window.location='report.html'
         }else{
@@ -87,10 +92,7 @@ angular.module('app', [])
           }, function error (response) {
             alert(response.data.message)
         })
-
-
-
-    }
+      }
 
 
     app.report = function(){

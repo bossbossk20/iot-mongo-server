@@ -16,26 +16,83 @@
 </head>
 <body ng-controller="AppController as app" >
 
-		<div class="container" ng-init="app.checkLogin()">
-		<br>
-			<nav class="navbar navbar-default">
-			  <div class="container-fluid">
-			    <div class="navbar-header">
-			      <a class="navbar-brand he" href="index.html">
-			        {{app.name}}
-			      </a>
-			    </div>
-			    <button class="log btn btn-default " ng-click="app.toLog()">login</button>
-				
-			  </div>
-			</nav>
-		
-			<h1>
-				Report
-			</h1>
-		</div>
-		<script>
+		<div class="container" ng-init="app.checkLogin();app.graph()">
+			<br>
+				<nav class="navbar navbar-default">
+				  <div class="container-fluid">
+				    <div class="navbar-header">
+				      <a class="navbar-brand he" href="index.html">
+				        {{app.name}}
+				      </a>
+				    </div>
+				    <button class="log btn btn-default " ng-click="app.toLog()">login</button>
+					
+				  </div>
+				</nav>
+			
+				<h1>
+					Report
+				</h1>
 
-		</script>
+
+
+				 <div class="graph">
+				 			   <canvas id="buyers" width="1200" height="400"></canvas>
+      
+        <script>
+            // line chart data
+            var buyerData = {
+                labels : ["IoT-0","IoT-1","IoT-2","IoT-3","IoT-4","IoT-5","IoT-6","IoT-7","IoT-8","IoT-9"],
+                datasets : [
+                {
+                    fillColor : "rgba(0,0,0,0.1)",
+                    strokeColor : "blue",
+                    pointColor : "#fff",
+                    pointStrokeColor : "#9DB86D",
+                    data : [203,156,99,251,305,247,100,600,300,300]
+                },
+                 {
+                    fillColor : "rgba(255,0,0,0.1)",
+                    strokeColor : "red",
+                    pointColor : "white",
+                    pointStrokeColor : "#9DB86D",
+                    data : [500,600,700,800,500,400,300,100,500,550]
+                }
+            ]
+            }
+            // get line chart canvas
+            var buyers = document.getElementById('buyers').getContext('2d');
+            // draw line chart
+            new Chart(buyers).Line(buyerData);
+            // pie chart data
+            var pieData = [
+                {
+                    value: 20,
+                    color:"#878BB6"
+                },
+                {
+                    value : 40,
+                    color : "#4ACAB4"
+                },
+                {
+                    value : 10,
+                    color : "#FF8153"
+                },
+                {
+                    value : 30,
+                    color : "#FFEA88"
+                }
+            ];
+            
+            
+           
+        </script>
+				 </div>
+
+
+
+
+		</div>
+		
 </body>
 </html>
