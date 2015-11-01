@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="app">
 	<head>
-	 <script src="//code.jquery.com/jquery.min.js"></script>
+	  <script src="//code.jquery.com/jquery.min.js"></script>
 	  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
-	  <meta charset="utf-8">
 	  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>	
+	  <meta charset="utf-8">
+		
 	  <link rel="stylesheet" href="app.css">
 	  <script src="app.js"></script>
 	  <title>IoT</title>
@@ -44,10 +43,7 @@
 	
 		<div class="col-sm-4">
 				<form ng-submit="app.submit(input)">
-					<div class="form-group">
-					    <label >Timestamp</label>
-					    <input type="text" ng-model="input.timestamp" class="form-control" placeholder="Timestamp">
-					  </div>
+					
 				  <div class="form-group">
 				    <label>IoT ID</label>
 				    <input type="text" ng-model="input.iot_id" class="form-control" placeholder="IoT ID">
@@ -84,10 +80,10 @@
 			    	<tr ng-repeat="data in app.d">
 			    		<td class="col-sm-1">{{$index}}</td>
 				  		<td class="col-sm-1">{{data.iot_id}}</td>
-				  		<td class="col-sm-2">{{data.temperature}}</td>
+				  		<td class="col-sm-1">{{data.temperature}}</td>
 				  		
-				  		<td class="col-sm-2">{{data.relative_humidity}}</td>
-				  		<td class="col-sm-2">{{data.timestamp}}</td>
+				  		<td class="col-sm-1">{{data.relative_humidity}}</td>
+				  		<td class="col-sm-4">{{app.toThaiDateTime(data.timestamp)}}</td>
 				  		<td class="col-sm-1"><button class="btn btn-danger glyphicon glyphicon-trash " ng-click="app.delete(data._id,$index)"></button></td>	
 				  	</tr>
 			    </tbody>

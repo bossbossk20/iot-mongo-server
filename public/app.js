@@ -14,6 +14,9 @@ angular.module('app', [])
     getIot()
     app.hide = false 
 
+    app.toThaiDateTime = function (date) {
+      return moment(date).format('MMMM Do YYYY, h:mm:ss a')
+    }
 
     app.se = function(){
       console.log(app.search);

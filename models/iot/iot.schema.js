@@ -6,7 +6,7 @@
 
   var schema = new Schema({
     
-      timestamp: Number,
+      timestamp: { type : Date , default : Date.now},
       iot_id: Number,
       temperature: Number,
       relative_humidity: Number 
