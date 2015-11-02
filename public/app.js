@@ -6,6 +6,7 @@ angular.module('app', [])
     var username = null
     var password = null
     app.u = []
+
       
     
     
@@ -43,7 +44,7 @@ angular.module('app', [])
                               datasets: [
                                   {
                                       label: "temperature",
-                                      fillColor: "rgba(255,0,0,0.2)",
+                                      fillColor: "rgba(255,0,0,0.1)",
                                       strokeColor: "rgba(255,0,0,1)",
                                       pointColor: "rgba(255,0,0,1)",
                                       pointStrokeColor: "#fff",
@@ -53,7 +54,7 @@ angular.module('app', [])
                                   },
                                   {
                                       label: "relative_humidity",
-                                      fillColor: "rgba(69,187,91,0.2)",
+                                      fillColor: "rgba(69,187,91,0.1)",
                                       strokeColor: "rgba(69,187,91,1)",
                                       pointColor: "rgba(69,187,91,1)",
                                       pointStrokeColor: "#fff",
@@ -64,13 +65,13 @@ angular.module('app', [])
                               ]
                           };
 
-               var ctx = document.getElementById("c").getContext("2d")
+               var ctx = document.getElementById("iot").getContext("2d")
                var myLineChart = new Chart(ctx).Line(data);
 
                
                   for(var i =0;i<response.data.length;i++){
                     if (response.data[i].iot_id==1){
-                         myLineChart.addData([response.data[i].temperature, response.data[i].relative_humidity] ,"IOT_ID : 1");
+                         myLineChart.addData([response.data[i].temperature, response.data[i].relative_humidity] ,response.data[i].timestamp);
                        }
                    
                 }
@@ -98,15 +99,7 @@ angular.module('app', [])
 
 
 
-    app.checkLogin = function(){  // 
-          //console.log(app.session);
-        if(app.session==1){
-          window.location='report.html'
-        }else{
-
-          //window.location = 'report.html'
-        }
-    }
+    
 
     app.toLog =  function(){
         window.location='login.html'
@@ -115,35 +108,25 @@ angular.module('app', [])
 
 
     app.login = function(input){
-          if((input.username=='admin')&&(input.password=='admin')){
+       //$http.post('/api/login', input)
+       $http.post('/login' , { username : input.username , password : input.password})
+       .then(function success (response) {
+            console.log(response.data[0].username)
+            if((input.username== response.data[0].username)&&(input.password == response.data[0].password)){
+              console.log("have user ");
+              window.location= "report.html"
+            }else{
+              window.location="login.html"
+            }
 
-               app.session = 1
-
-                
-
-                console.log(app.session);
-                window.location='report.html'
-
-          }
-          
-          
-
-        
-        
-
-         
-           
-          
-
+            //app.d = response.data
+          }, function error (response) {
+            alert(response.data.message)
+        })
 
 
     }
-     $http.get('/api/login'). success(function(response) {
-            app.user = response
-            
-            console.log(response)
-               
-            })
+     
 
 
     app.register = function(data){
