@@ -2,9 +2,9 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 var iot = require('./models/iot/iot.schema.js')
-var login  = require('./models/login/login.schema.js')
+//var login  = require('./models/login/login.schema.js')
 
-mongoose.connect('mongodb://localhost:27017/iot')
+mongoose.connect('mongodb://localhost/iot')
 var app = express()
 
 app.use(express.static('public'))
@@ -81,9 +81,7 @@ app.post('/',function(req,res){
  var login = require('./models/login/login.route.js')
  app.use('/', login)
 
-	app.get('/' , function(req,res){
-		res.send("hello")
-	})
+	
 	
  
 	

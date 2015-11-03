@@ -10,7 +10,18 @@ angular.module('app', [])
       
     
     
-
+    app.re = function (data){
+      console.log(data);
+       $http.post('/api/login', data)
+          .then(function success (response) {
+            console.log(response)
+            
+            alert('Success')
+            window.location = 'login.html'
+          }, function error (response) {
+            alert(response.data.message)
+        })
+      }
 
     getIot()
     app.hide = false 
@@ -41,6 +52,7 @@ angular.module('app', [])
       console.log("graph working") 
       $http.get('/api/iot')
               .then(function success (response) {
+                console.log(sessionStorage.testSes)
          
                   var data = {
                               labels: [],
@@ -117,6 +129,7 @@ angular.module('app', [])
             console.log(response.data[0].username)
             if((input.username== response.data[0].username)&&(input.password == response.data[0].password)){
               console.log("have user ");
+              
               window.location= "report.html"
             }else{
               window.location="login.html"
@@ -132,22 +145,22 @@ angular.module('app', [])
      
 
 
-    app.register = function(data){
-
-       $http.post('/api/login', data)
-          .then(function success (response) {
-            console.log(response)
+    // app.register = function(input){
+    //   console.log(input);
+    //    $http.post('/api/login', data)
+    //       .then(function success (response) {
+    //         console.log(response)
             
-            alert('Success')
-          }, function error (response) {
-            alert(response.data.message)
-        })
-      }
+    //         alert('Success')
+    //       }, function error (response) {
+    //         alert(response.data.message)
+    //     })
+    //   }
 
 
     app.report = function(){
 
-      window.location="report.html"
+      window.location="login.html"
 
     }
 
