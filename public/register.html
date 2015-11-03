@@ -15,7 +15,20 @@
 	<title>Report</title>
 </head>
 <body ng-controller="AppController as app">
-	{{app.name}}
+			<div class="container">
+				<nav class="navbar navbar-default">
+				  <div class="container-fluid">
+				    <div class="navbar-header">
+				      <a class="navbar-brand" href="index.html">
+				        {{app.name}}
+				      </a>
+				    </div>
+				    <form class="navbar-form navbar-left" role="search">
+					  
+					<button class="log btn btn-default" ng-click="app.toLog() " class="log">Login</button>
+				  </div>
+				</nav>
+		    
 			<div class="box">
 				<div class="col-sm-4"></div>
 				<div class="col-sm-4" >
@@ -40,9 +53,9 @@
 					  <button type="submit" class="btn btn-default">Register</button>
 
 					</form>
+				</div>
+				<div class="col-sm-4"></div>
 			</div>
-			<div class="col-sm-4"></div>
-
-
+		
 </body>
 </html>

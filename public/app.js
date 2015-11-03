@@ -19,6 +19,9 @@ angular.module('app', [])
       return moment(date).format('MMMM Do YYYY, h:mm:ss a')
     }
 
+    app.toRegister = function(){
+      window.location = "register.html"
+    }
     app.se = function(){
       console.log(app.search);
        $http.post('/koy', {search : app.search })
@@ -71,7 +74,7 @@ angular.module('app', [])
                
                   for(var i =0;i<response.data.length;i++){
                     if (response.data[i].iot_id==1){
-                         myLineChart.addData([response.data[i].temperature, response.data[i].relative_humidity] ,response.data[i].timestamp);
+                         myLineChart.addData([response.data[i].temperature, response.data[i].relative_humidity] ,app.toThaiDateTime(response.data[i].timestamp));
                        }
                    
                 }

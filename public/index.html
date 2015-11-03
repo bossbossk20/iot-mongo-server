@@ -20,25 +20,28 @@
 		
 
 
-		<!--  <canvas id="mycanvas" width="256" height="256"> 
-		</div> -->
+		<canvas id="mycanvas" width="256" height="256"> 
+		</div>
 		
-
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
-		      <a class="navbar-brand he" href="index.html">
+		      <a class="navbar-brand" href="index.html">
 		        {{app.name}}
 		      </a>
 		    </div>
-		    
-			    <input type="text" class="form-control" placeholder="Search" >
-			 
-		    	<button class="log btn btn-default " ng-click="app.toLog()">login</button>
-		    	<button type="submit" class="btn btn-default">Submit</button>
+		    <form class="navbar-form navbar-left" role="search">
+			  <div class="form-group">
+			    <input type="text" class="form-control" placeholder="Search by id" ng-model="app.search">
+			  </div>
+			  <button type="submit" class="btn btn-default" ng-click="app.se()">Submit</button>
+			</form>
+			<button class="log btn btn-default" ng-click="app.toLog()">Login</button>
+			<button class="log btn btn-default" ng-click="app.toRegister()">Register</button>
 		  </div>
-		 
 		</nav>
+		    
+			
 	
 		<div class="col-sm-4">
 				<form ng-submit="app.submit(input)">
@@ -88,7 +91,7 @@
 			    </tbody>
 			  </table>
 			</div>
-
+			
 
 				
 
