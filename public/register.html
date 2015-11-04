@@ -24,33 +24,33 @@
 				      </a>
 				    </div>
 				    <form class="navbar-form navbar-left" role="search">
-					  
-					<button class="log btn btn-default" ng-click="app.toLog() " class="log">Login</button>
+					  </form>
+					<button class="log btn btn-default" ng-click="app.toLog() ">Login</button>
 				  </div>
 				</nav>
 		    
 			<div class="box">
 				<div class="col-sm-4"></div>
 				<div class="col-sm-4" >
-					<form ng-submit="app.register(input)">
+					<form ng-submit="app.re(input)">
 						<div class="form-group">
 						    <label >Username</label>
-						    <input type="text" ng-model="input.username" class="form-control" placeholder="User">
+						    <input type="text" ng-model="input.username" class="form-control" placeholder="Username" required	>
 						  </div>
 					  <div class="form-group">
 					    <label>Password</label>
-					    <input type="password" ng-model="input.password" class="form-control" placeholder="IoT ID">
+					    <input type="password" ng-model="input.password" class="form-control" placeholder="Password" required>
 					  </div>
 					  <div class="form-group">
 					    <label >First Name</label>
-					    <input type="text" ng-model="input.name" class="form-control" placeholder="First Name">
+					    <input type="text" ng-model="input.name" class="form-control" placeholder="First Name" required>
 					  </div>
 					  <div class="form-group">
 					    <label >Last Name</label>
-					    <input type="text" ng-model="input.last_name" class="form-control" placeholder="Last Name">
+					    <input type="text" ng-model="input.last_name" class="form-control" placeholder="Last Name" required>
 
 					  </div>
-					  <button type="submit" class="btn btn-default" ng-click="app.re(input)">Register</button>
+					  <button type="submit" class="btn btn-default" >Register</button>
 
 					</form>
 				</div>

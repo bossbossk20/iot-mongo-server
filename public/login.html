@@ -15,22 +15,37 @@
 	<title>Report</title>
 </head>
 <body ng-controller="AppController as app">
-	{{app.name}}
-
+		
+			<div class="container" ng-init="app.graph()">
+			<br>
+			<br>
+				<nav class="navbar navbar-default">
+				  <div class="container">
+				    <div class="navbar-header">
+				      <a class="navbar-brand he" href="index.html">
+				        {{app.name}}
+				      </a>
+				    </div>
+				    
+					
+				  </div>
+				</nav>
+			
+		<br>
 		<div class="box">
 				<div class="col-sm-4"></div>
 				<div class="col-sm-4" >
 						<form ng-submit="app.login(input)">
 							<div class="form-group">
 							    <label >Username</label>
-							    <input type="text" ng-model="input.username" class="form-control" placeholder="User">
+							    <input type="text" ng-model="input.username" class="form-control" placeholder="User" required>
 							  </div>
 							  <div class="form-group">
 							    <label >Password</label>
-							    <input type="password" ng-model="input.password" class="form-control" placeholder="User">
+							    <input type="password" ng-model="input.password" class="form-control" placeholder="User" required>
 							  </div>
 						
-					  <button type="submit" class="btn btn-default log">Login</button>
+					  <button type="submit" class="btn btn-default">Login</button>
 				
 		
 				<script>
@@ -45,7 +60,7 @@
 					</form>
 			</div>
 			<div class="col-sm-4"></div>
-
+		</div>
 		
 </body>
 </html>

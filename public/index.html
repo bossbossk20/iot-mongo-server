@@ -32,7 +32,7 @@
 		    </div>
 		    <form class="navbar-form navbar-left" role="search">
 			  <div class="form-group">
-			    <input type="text" class="form-control" placeholder="Search by id" ng-model="app.search">
+			    <input type="text" class="form-control" placeholder="Search by id" ng-model="app.search" >
 			  </div>
 			  <button type="submit" class="btn btn-default" ng-click="app.se()">Submit</button>
 			</form>
@@ -48,15 +48,15 @@
 					
 				  <div class="form-group">
 				    <label>IoT ID</label>
-				    <input type="text" ng-model="input.iot_id" class="form-control" placeholder="IoT ID">
+				    <input type="text" ng-model="input.iot_id" class="form-control" placeholder="IoT ID" required>
 				  </div>
 				  <div class="form-group">
 				    <label >Temperature</label>
-				    <input type="text" ng-model="input.temperature" class="form-control" placeholder="Temperature">
+				    <input type="text" ng-model="input.temperature" class="form-control" placeholder="Temperature" required>
 				  </div>
 				  <div class="form-group">
 				    <label >Relative Humidity</label>
-				    <input type="text" ng-model="input.relative_humidity" class="form-control" placeholder="Relative Humidity">
+				    <input type="text" ng-model="input.relative_humidity" class="form-control" placeholder="Relative Humidity" required>
 
 				  </div>
 				  <button type="submit" class="btn btn-success glyphicon glyphicon-plus">Add</button>
